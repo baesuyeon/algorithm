@@ -1,7 +1,7 @@
 package org.example
 
 /**
- * 문제 : https://school.programmers.co.kr/learn/courses/30/lessons/138476
+ * 문제 : https://school.programmers.co.kr/learn/courses/30/lessons/12935
  *
  * 배운 것 :
  * - kotlin 1.4.0 버전 부터는 min() 대신 minOrNull()을 사용한다.
