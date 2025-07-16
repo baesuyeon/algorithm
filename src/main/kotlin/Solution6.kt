@@ -25,7 +25,7 @@ class Solution6 {
                 answer++
             }
 
-            if (i + 10 >= discount.size - 10) {
+            if (i == (discount.size - 10)) {
                 break
             }
 
