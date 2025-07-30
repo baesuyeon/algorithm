@@ -1,30 +1,34 @@
 package org.example
 
 /**
- * 문제 : https://school.programmers.co.kr/learn/courses/30/lessons/12945
+ * 문제 : https://school.programmers.co.kr/learn/courses/30/lessons/42842?language=kotlin
  *
  * 배운것 :
- * - (a + b) % c == ((a % c) + (b % c)) % c
- * - 모듈러 연산을 중간마다 해줘도 최종 결과에 영향이 없다.
- * - 오히려 정수 오버플로우 방지 때문에 반드시 해줘야 한다.
+ * - intArrayOf(vararg elements: Int) : 특정 값을 직접 넣어 초기화할 때 사용 ex) intArrayOf(1, 2, 3)
+ * - IntArray(size: Int) : 지정한 크기의 배열을 생성하고 모든 값을 기본값 0으로 초기화 (값은 나중에 할당 가능)
+ * - arr[index] = value : 배열 요소에 값 할당
  */
-class Solution12 {
-    fun solution(n: Int): Int {
-       var tmp1: Int = 0
-       var tmp2: Int = 1
+class Solution13 {
+    fun solution(brown: Int, yellow: Int): IntArray {
+        var answer = IntArray(2)
 
-        repeat(n - 1) {
-            val tmp3 = (tmp1 + tmp2) % 1234567
-            tmp1 = tmp2
-            tmp2 = tmp3
+        for (width in (brown / 2 - 1) downTo 3) {
+            val yellowHeight = (brown - (width * 2)) / 2
+            if ((width - 2) * (yellowHeight) == yellow) {
+                answer[0] = width
+                answer[1] = yellowHeight + 2
+                break
+            }
         }
 
-        return tmp2 % 1234567
+        return answer
     }
 }
 
 fun main() {
-    val n = 5
-    val answer = Solution12().solution(n)
-    print(answer)
+    val brown = 24
+    val yellow = 24
+    val answer = Solution13().solution(brown, yellow)
+    print(answer[0])
+    print(answer[1])
 }
