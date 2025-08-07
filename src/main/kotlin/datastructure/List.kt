@@ -1,5 +1,8 @@
 package org.example.datastructure
 
+/**
+ * Kotlin의 listOf()는 내부적으로 ArrayList 기반으로 LinkedList와는 다르다
+ */
 fun main() {
     val people = listOf("Song", "Kim", "Lee") // 읽기 전용 리스트
     val peopleSize = people.size
