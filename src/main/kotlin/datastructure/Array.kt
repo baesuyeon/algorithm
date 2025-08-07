@@ -4,6 +4,10 @@ package org.example.md
  * 배열 vs 링크드 리스트
  * 배열은 연속된 공간에 데이터를 저장하기 때문에 인덱스를 통해 빠르게 데이터에 접근할 수 있다.
  * 크기가 고정되어있어서 크기 조정이 어렵다.
+ * - 배열에 빈 공간이 있다면: 그 자리에 바로 추가 → O(1)
+ * - 배열이 가득 찼다면: 새 배열을 생성((1.5~2배 크기)해서 기존 배열 요소 복사
+ *
+ * 참고) Kotlin의 listOf()는 배열 기반 컬렉션 ArrayList 기반으로 LinkedList와는 다르다
  *
  * 링크드 리스트는 메모리에 데이터가 흩어져 저장되어 있기 때문에 특정 노드에 접근하기 위해서는 시작부터 끝까지 탐색해야 한다.
  * 각 노드는 다음 노드를 가리키는 포인터를 포함하기 때문에 노드를 추가하거나 제거하는것이 쉽다.
@@ -67,4 +71,16 @@ fun main() {
     names1.forEachIndexed { index, name ->
         println("$index, $name")
     }
+
+    val people = listOf("Song", "Kim", "Lee") // 읽기 전용 리스트
+    val peopleSize = people.size
+
+    for (person in people) {
+        println(person)
+    }
+
+    val numbers2 = mutableListOf(1, 2, 3)
+    numbers2.add(4) // 1, 2, 3, 4
+    numbers2[0] = 10 // 10, 2, 3, 4
+    numbers2.removeAt(1) // 10, 3, 4
 }
