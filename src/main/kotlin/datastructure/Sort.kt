@@ -11,6 +11,11 @@ package org.example.datastructure
  * - 원본 리스트는 변경하지 않고 정렬된 새로운 리스트를 반환한다.
  */
 fun main() {
+    // By가 붙는 sort 함수는 어느 기준을 하나 지정하면 그 값을 기준으로 정렬을 한다.
+    val sorted0 = mutableListOf(1 to "A", 2 to "B", 3 to "C", 4 to "D")
+    sorted0.sortByDescending { it.second }  // second를 기준으로 내림차순
+    println(sorted0)
+
     val users = listOf(
         User("Bae", 31),
         User("Kim", 25),
@@ -22,9 +27,9 @@ fun main() {
     println(sorted1)
 
     // 람다로 Comparator를 만드는 방식 (Comparator { a, b -> ... })
-    val sorted2 = users.sortedWith(Comparator { a, b ->
+    val sorted2 = users.sortedWith { a, b ->
         b.age.compareTo(a.age)
-    })
+    }
     println(sorted2)
 
     // 헬퍼 함수 사용

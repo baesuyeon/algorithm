@@ -12,6 +12,9 @@ package org.example
  *
  * - MutableList -> ArrayList
  * - ArrayList(answer)
+ *
+ * - MutableList -> Array
+ * - MutableList.toTypedArray()
  */
 class Solution22 {
     fun solution(numbers: IntArray): IntArray {
