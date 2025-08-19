@@ -10,22 +10,22 @@ class Solution25 {
     var answer = 0
 
     fun solution(numbers: IntArray, target: Int): Int {
-        dfs(n = 0, numbers = numbers, depth = 0, target = target)
+        dfs(total = 0, numbers = numbers, index = 0, target = target)
 
         return answer
     }
 
-    fun dfs(n: Int, numbers: IntArray, depth: Int, target: Int) { // n = 노드
-        // dfs 종료 조건 (가장 마지막 노드까지 연산이 완료되었을 때)
-        if (depth == numbers.size) {
-            if (n == target) {
+    fun dfs(total: Int, numbers: IntArray, index: Int, target: Int) { // total = 누적 합계값
+        // dfs 종료 조건 (가장 마지막 인덱스까지 연산이 완료되었을 때)
+        if (index == numbers.size) {
+            if (total == target) {
                 answer++
             }
             return
         }
 
-        dfs(n + numbers[depth], numbers, depth + 1, target = target)
-        dfs(n - numbers[depth], numbers, depth + 1, target = target)
+        dfs(total + numbers[index], numbers, index + 1, target = target)
+        dfs(total - numbers[index], numbers, index + 1, target = target)
     }
 }
 
