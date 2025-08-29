@@ -2,7 +2,7 @@ package org.example
 
 /**
  * 문제 : https://www.acmicpc.net/problem/15651
- * - N개 중 M개를 뽑는 Case
+ * - 1~N 중 M개를 뽑는 Case
  * - ex) {1, 2, 3, 4, 5} 중 3개를 뽑는 Case
  * - 순서에 상관이 있고 중복을 허용하면서 나올 수 있는 모든 수열
  * 배운 것 :
@@ -33,7 +33,7 @@ class Solution27 {
         }
     }
 
-    fun run(n: Int, m: Int) {
+    fun solution(n: Int, m: Int) {
         dfs(index = 0, n = n, m = m)
 
         val bw = System.out.bufferedWriter()
@@ -45,5 +45,5 @@ class Solution27 {
 fun main() {
     val (N, M) = readLine()!!.split(" ").map { it.toInt() }
 
-    Solution27().run(n = N, m = M)
+    Solution27().solution(n = N, m = M)
 }
