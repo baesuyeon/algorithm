@@ -1,64 +1,32 @@
 package org.example
 
-import kotlin.math.min
-
 /**
- * 문제 : https://school.programmers.co.kr/learn/courses/30/lessons/42860?language=kotlin
+ * 문제 : https://school.programmers.co.kr/learn/courses/30/lessons/131701
  */
 class Solution38 {
-    fun solution(name: String): Int {
-        val size = 'Z' - 'A' + 1
+    fun solution(elements: IntArray): Int {
+        val set = mutableSetOf<Int>()
 
-        // 각 문자 별 상하 방향 최소 이동 횟수
-        val minCount = Array(size = name.length) { 0 }
+        for (i in (0..elements.size - 1)) {
+            var sum = 0 // 누적 합
 
-        name.forEachIndexed { index, word ->
-            val a = word - 'A'
-            val b = size - (word - 'A')
-            minCount[index] = min(a, b)
-        }
-
-        // 오른쪽으로 돌았을 때 조이스틱을 움직인 최소 횟수
-        var right = 0
-        // 왼쪽 돌았을 때 조이스틱을 움직인 최소 횟수
-        var left = 0
-
-        // 오른쪽으로 돌면서 알파벳을 교체해가는 배열
-        var rightArray = Array(size = name.length) { 'A' }
-        // 왼쪽으로 돌면서 알파벳을 교체해가는 배열
-        var leftArray = Array(size = name.length) { 'A' }
-
-        // 오른쪽 회전
-        for(i in (0..name.length - 1)) {
-            right += minCount[i]
-            rightArray[i] = name[i]
-            if (rightArray.joinToString("") == name) {
-                break
+            for (j in (i..elements.size - 1)) {
+                sum += elements[j]
+                set.add(sum)
             }
-            right += 1
-        }
 
-        // 왼쪽 회전
-        left += minCount[0]
-        leftArray[0] = name[0]
-        if(leftArray.joinToString("") != name) {
-            left += 1
-            for(i in (name.length - 1 downTo 1)) {
-                left += minCount[i]
-                leftArray[i] = name[i]
-                if (leftArray.joinToString("") == name) {
-                    break
-                }
-                left += 1
+            for (k in (0..i - 1)) {
+                sum += elements[k]
+                set.add(sum)
             }
         }
 
-        return min(left, right)
+        return set.size
     }
 }
 
 fun main() {
-    val name = "BBBAAAAAB" // 기댓값 8
+    val elements = intArrayOf(7, 9, 1, 1, 4)
 
-    println(Solution38().solution(name))
+    println(Solution38().solution(elements))
 }
