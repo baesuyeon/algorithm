@@ -7,6 +7,8 @@ import kotlin.text.forEach
  *
  * 배운 것 :
  * - 트라이 자료구조 구현 (map 사용)
+ * - find: O(m) m: 찾으려는 문자열의 길이
+ * - add: O(m) m: 찾으려는 문자열의 길이
  */
 class Trie2() {
     val rootNode = Node(linkMap = mutableMapOf(), isEnd = false)
