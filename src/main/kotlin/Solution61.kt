@@ -7,6 +7,17 @@ package org.example
  * - Map.getOrPut(key) { defaultValue }
  *   - key가 존재하면 해당 값을 반환하고
  *   - 없으면 { } 블록의 값을 넣고 그 값을 반환
+ *
+ *   public inline fun <K, V> MutableMap<K, V>.getOrPut(key: K, defaultValue: () -> V): V {
+ *     val value = get(key)
+ *     return if (value == null) {
+ *         val answer = defaultValue()
+ *         put(key, answer)
+ *         answer
+ *     } else {
+ *         value
+ *     }
+ *   }
  */
 class Solution61 {
     fun findOrder(numCourses: Int, prerequisites: Array<IntArray>): IntArray {
