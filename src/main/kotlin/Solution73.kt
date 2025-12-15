@@ -5,6 +5,8 @@ import kotlin.math.max
 /**
  * 문제 : https://leetcode.com/problems/merge-intervals/description/
  *
+ * 배운 것 : drop(1), dropLast(1)
+ *
  * 구간들을 시작 지점 기준으로 오름차순 한다.
  *
  * case1)
@@ -25,7 +27,7 @@ class Solution73 {
 
         result.add(sortedIntervals.first())
 
-        for (interval in sortedIntervals.subList(1, sortedIntervals.size)) {
+        for (interval in sortedIntervals.subList(1, sortedIntervals.size)) { // drop(1)을 대신 사용할 수 있다
             val prevInterval = result.last()
             val start1 = prevInterval[0]
             val end1 = prevInterval[1]
