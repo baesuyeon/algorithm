@@ -12,22 +12,23 @@ class Solution76 {
         arr2[0] = nums[nums.size - 1]
 
         for(i in 1 until nums.size) {
+            // 왼쪽 누적곱
             arr1[i] = arr1[i - 1] * nums[i]
-        }
-
-        for(i in 1 until nums.size) {
+            // 오른쪽 누적 곱
             arr2[i] = arr2[i - 1] * nums[nums.size - i - 1]
         }
 
         val answer = IntArray(nums.size)
         for(i in 0 .. nums.size - 1) {
-            var num1 = 1
-            var num2 = 1
-            if (i - 1 >= 0) {
-                num1 = arr1[i - 1]
+            val num1 = if (i - 1 >= 0) {
+                arr1[i - 1]
+            } else {
+                1
             }
-            if (nums.size - i - 2 >= 0) {
-                num2 = arr2[nums.size - i - 2]
+            val num2 = if (nums.size - i - 2 >= 0) {
+                arr2[nums.size - i - 2]
+            } else {
+                1
             }
 
             answer[i] = num1 * num2
