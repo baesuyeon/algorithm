@@ -19,9 +19,9 @@ class Solution85 {
         var medium = Int.MAX_VALUE
 
         for (num in nums) {
-            if (num < small) {
+            if (num <= small) {
                 small = num
-            } else if (num < medium) {
+            } else if (num <= medium) {
                 medium = num
             } else {
                 return true
@@ -33,7 +33,7 @@ class Solution85 {
 }
 
 fun main() {
-    val nums = intArrayOf(2, 1, -1)
+    val nums = intArrayOf(1, 1, 1, 1)
 
     println(Solution85().increasingTriplet(nums))
 }
